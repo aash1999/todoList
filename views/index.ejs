@@ -5,7 +5,12 @@
     <title>current day</title>
   </head>
   <body>
-    <h1>Today is : <%= day %> </h1>
+    <% if(day =="Wednesday"){ %>
+<h1 style ="color : red">Today is : <%= day %></h1>
+    <% } else { %>
+      <h1>Today is : <%= day %> </h1>
+    <% } %>
+
 
   </body>
 </html>
