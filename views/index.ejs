@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>current day</title>
-  </head>
-  <body>
-    <% if(day =="Wednesday"){ %>
-<h1 style ="color : red">Today is : <%= day %></h1>
-    <% } else { %>
-      <h1>Today is : <%= day %> </h1>
+
+<head>
+  <meta charset="utf-8">
+  <title>current day</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="box" id="heading">
+    <h1> <%= day %></h1>
+  </div>
+  <div class="box">
+    <% for(var i = 0 ; i< items.length ; i++){ %>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p><%= items[i] %></p>
+    </div>
     <% } %>
+    <form class="item" action="/" method="post">
+
+      <input type="text" name="newIteam" placeholder="New Item" autocomplete="off">
+
+      <button type="submit" name="button">+</button>
+
+    </form>
+  </div>
 
 
-  </body>
+
+
+
+
+</body>
+
 </html>

@@ -6,36 +6,29 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 app.set("view engine", "ejs")
+app.use(express.static("public"))
 
 var today = new Date();
+var options ={
+  weekday : "long",
+  day : "numeric",
+  month : "long",
+}
+var day  = today.toLocaleDateString("en-US",options)
+var items =[]
 
 app.listen(3000)
 
 app.get("/", function(req, res) {
-  var day = ''
-  switch (today.getDay()) {
-    case 0:
-      day = 'Sunday';
-      break;
-    case 1:
-      day = 'Monday';
-      break;
-    case 2:
-      day = 'Tuesday';
-      break;
-    case 3:
-      day = 'Wednesday';
-      break;
-    case 4:
-      day = 'Thursday';
-      break;
-    case 5:
-      day = 'Friday';
-      break;
-    case 6:
-      day = 'Saturday';
-      break;
+
+  res.render("index", {day : day , items : items})
+})
+
+app.post("/",function(req,res){
+  if(req.body.newIteam != ""){
+  items.push(req.body.newIteam)
 
   }
-  res.render("index", {day : day})
+  res.redirect("/")
+
 })
